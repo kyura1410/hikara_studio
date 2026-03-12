@@ -5,74 +5,166 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hikara Studio | Portfolio</title>
     <style>
-        body { background-color: #0d0d0d; color: #f0f0f0; font-family: sans-serif; margin: 0; text-align: center; }
-        header { padding: 60px 20px; background: #111; border-bottom: 2px solid #d4af37; }
-        h1 { color: #d4af37; margin: 0; letter-spacing: 3px; }
+        /* Pengaturan Dasar & Background Gradasi Hitam ke Emas */
+        body { 
+            /* Gradasi linier dari hitam ke emas gelap */
+            background: linear-gradient(135deg, #050505 0%, #151000 50%, #2b1f00 100%);
+            background-attachment: fixed; /* Biar gradasinya nggak ikut tergulung pas scroll */
+            color: #eaeaea; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 0;
+            min-height: 100vh;
+        }
         
-        /* Container Galeri */
+        /* Bagian Header / Judul Utama */
+        header { 
+            padding: 80px 20px; 
+            background: transparent; /* Dibuat transparan biar gradasi body kelihatan */
+            text-align: center;
+            border-bottom: 2px solid #d4af37; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        h1 { 
+            color: #d4af37; 
+            margin: 0; 
+            font-size: 3.2em;
+            letter-spacing: 5px; 
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        p.tagline {
+            color: #ccc;
+            font-style: italic;
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+        
+        /* Container Pembungkus Galeri */
         .gallery { 
             display: flex; 
             justify-content: center; 
-            gap: 20px; 
+            gap: 40px; 
             flex-wrap: wrap; 
-            padding: 40px 20px; 
+            padding: 60px 20px; 
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
-        /* Styling Gambar */
+        /* Styling Kotak Kartu (Card) */
         .photo-card {
-            background: #1a1a1a;
-            padding: 10px;
-            border-radius: 12px;
-            border: 1px solid #333;
-            transition: 0.3s;
+            background: rgba(20, 20, 25, 0.6); /* Dibuat agak transparan */
+            backdrop-filter: blur(5px); /* Efek blur ala kaca (glassmorphism) */
+            padding: 15px;
+            border-radius: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.2); /* Border emas tipis */
+            width: 320px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .photo-card:hover { border-color: #d4af37; transform: scale(1.02); }
         
+        /* Efek melayang saat mouse diarahkan ke kartu */
+        .photo-card:hover { 
+            border-color: #d4af37; 
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.25);
+        }
+        
+        /* Styling Gambar - Kunci Biar Rapi & Tengah! */
         .photo-card img { 
             width: 100%; 
-            max-width: 300px; /* Ukuran lebar foto di web */
-            height: auto; 
-            border-radius: 8px; 
+            height: 350px; 
+            object-fit: cover; 
+            object-position: center; 
+            border-radius: 12px; 
             display: block;
         }
         
-        .photo-caption { margin-top: 10px; font-size: 0.9em; color: #888; }
-        footer { padding: 40px; color: #444; font-size: 0.8em; }
+        /* Tipografi Teks di Bawah Gambar */
+        .card-title {
+            color: #d4af37;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 20px 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .card-desc { 
+            font-size: 0.95em; 
+            color: #bbb; 
+            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            padding: 0 10px;
+        }
+        
+        /* Bagian Bawah Web & Link Instagram */
+        footer { 
+            text-align: center;
+            padding: 40px; 
+            background: rgba(0, 0, 0, 0.8);
+            color: #888; 
+            font-size: 0.9em; 
+            border-top: 1px solid #332600;
+        }
+        .highlight { color: #d4af37; font-weight: bold;}
+        
+        .ig-link {
+            display: inline-block;
+            margin: 15px 0;
+            padding: 10px 20px;
+            border: 1px solid #d4af37;
+            border-radius: 20px;
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .ig-link:hover {
+            background: #d4af37;
+            color: #000;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>HIKARA STUDIO</h1>
-        <p>Featured Works & Portfolio</p>
+        <h1>Hikara Studio</h1>
+        <p class="tagline">Capturing Emotion, Delivering Perfection.</p>
     </header>
 
     <div class="gallery">
         <div class="photo-card">
-            <img src="foto1.webp" alt="Portfolio 1">
-            <div class="photo-caption">Wedding Session</div>
-            <p>Dokumentasi momen sakral dengan sentuhan visual yang natural, sinematik, dan tak lekang oleh waktu.</p>
-
+            <img src="foto1.webp" alt="Wedding Session">
+            <div class="card-title">Wedding</div>
+            <div class="card-desc">Mengabadikan momen sakral dengan sentuhan visual yang natural, sinematik, dan tak lekang oleh waktu.</div>
         </div>
 
         <div class="photo-card">
-            <img src="foto2.webp" alt="Portfolio 2">
-            <div class="photo-caption">Cosplay Photography</div>
-            <p>Foto Karakter Anime menjadi kreatifitas yang unik & Momen Wisuda yang tak terlupakan.</p>
+            <img src="foto2.webp" alt="Graduation Session">
+            <div class="card-title">Wisuda</div>
+            <div class="card-desc">Merayakan pencapaian terbaikmu dengan dokumentasi kelulusan yang berkesan dan penuh kebanggaan.</div>
         </div>
 
         <div class="photo-card">
-            <img src="foto3.webp" alt="Portfolio 3">
-            <div class="photo-caption">Portrait Model</div>
-            <p>FOto model dengan pose yang natural dan menarik.</p>
-        </div>
+            <img src="foto3.webp" alt="Cosplay Concept">
+            <div class="card-title">Cosplay</div>
+            <div class="card-desc">Membawa karakter fiksi favoritmu ke dunia nyata lewat sesi foto tematik dan komposisi visual yang epik.</div>
         </div>
     </div>
 
     <footer>
-        <p>Server IP: 192.168.0.100 | Port SSH: 2222</p>
-        <p>Instagram: <span class="highlight">@kyura.jpg</span></p>
-        <p>Created by Kyura - Hikara Project 2026</p>
+        <div>
+            <a href="https://instagram.com/kyura.jpg" target="_blank" class="ig-link">📷 Instagram: @kyura.jpg</a>
+        </div>
+        
+        <p>Status Server: <span class="highlight">Online</span> | IP Address: <span class="highlight">192.168.0.100</span> | SSH Port: <span class="highlight">2222</span></p>
+        <p>&copy; 2026 Hikara Project - Dikonfigurasi oleh Kyura</p>
     </footer>
 
 </body>
